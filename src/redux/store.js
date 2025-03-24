@@ -12,6 +12,7 @@ import {
 import { contcatsReducer } from "./contactsSlice";
 import { filterReducer } from "./filterSlice";
 
+
 const persistConfig = {
     key: 'contacts',
     storage,
@@ -33,6 +34,6 @@ export const store = configureStore({
 });
 
 
-export const  persistor = persistStore(store)
+export const persistor = persistStore(store);
 
 
