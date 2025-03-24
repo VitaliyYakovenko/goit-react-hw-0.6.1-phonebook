@@ -11,13 +11,12 @@ import ContactsList from "../ContactsList/ContactsList";
 
 export default function App() {
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.contacts);
+  const contacts = useSelector(state => state.contacts.contacts);
   const filter = useSelector(state => state.filter);
- 
 
+ 
   
   const  addNewContact = ({ name, number }) => {
-    
     const id = nanoid();
     const newContact = {
       id,
@@ -49,7 +48,7 @@ export default function App() {
   const normalaizeFilter = filter?.toLocaleLowerCase();
 
 
-  const filteredArr = contacts.filter(contact => {
+  const filteredArr = contacts?.filter(contact => {
     return contact.name?.toLowerCase().includes(normalaizeFilter);
   });
 
@@ -64,7 +63,7 @@ export default function App() {
         sort={filter} /> 
       <ContactsList
         onDeleteById={onDeleteContact}
-        data={filteredArr} />
+        data={filteredArr || []} />
     </Container>)
   };
 
